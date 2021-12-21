@@ -17,4 +17,4 @@ test:
 # Run full app
 .PHONY = run
 run:
-	python3 main.py
+	python3 main.py --service bunker
