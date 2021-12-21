@@ -1,4 +1,4 @@
-# Python DDD skeleton
+# Log Bunker
 
 Template of a Python application using Domain-Driven Design and Command Query Response Segregation principles.
 
