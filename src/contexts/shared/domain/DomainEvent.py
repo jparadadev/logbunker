@@ -14,9 +14,9 @@ class DomainEvent(ABC):
             occurred_on: Optional[datetime]):
         self.name = name
         self.aggregate_id = aggregate_id
-        if self.aggregate_id is None:
-            self.aggregate_id = uuid.uuid4()
         self.id = event_id
+        if self.id is None:
+            self.id = uuid.uuid4()
         self.occurred_on = occurred_on
         self.created_at = datetime.now()
         if self.occurred_on is None:

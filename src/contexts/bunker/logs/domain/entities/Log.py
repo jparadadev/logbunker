@@ -41,13 +41,20 @@ class Log(AggregateRoot):
             creation_date: LogCreationDate,
     ):
         log = Log(log_id, content, level, origin, creation_date)
-        event = LogCreatedDomainEvent(log.id.value())  # TODO: add remaining important content
+        event = LogCreatedDomainEvent(
+            log.id.value(),
+            log.content.value(),
+            log.level.value(),
+            log.origin.value(),
+            log.creation_date.value(),
+            log.registration_date.value(),
+        )
         log.record_event(event)
         return log
 
     @staticmethod
     def create_from_primitives(raw_data: Dict[str, Any]):
-        user = Log(
+        log = Log(
             LogId(raw_data.get('id')),
             LogContent(raw_data.get('content')),
             LogLevel(raw_data.get('level')),
@@ -55,7 +62,7 @@ class Log(AggregateRoot):
             LogCreationDate(raw_data.get('creation-date')),
             LogRegistrationDate(raw_data.get('registration-date')),
         )
-        return user
+        return log
 
     def to_primitives(self) -> Union[Dict, List]:
         return {
