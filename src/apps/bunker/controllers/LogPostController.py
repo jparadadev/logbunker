@@ -22,7 +22,8 @@ class LogPostController(BunkerController):
 
     async def run(self, req: Request) -> JSONResponse:
         body: Dict[str, Any] = await req.json()
-        command: CreateLogCommand = CreateLogCommand(body['id'])
+        command: CreateLogCommand = CreateLogCommand(body['id'], body['content'], body['level'], body['origin'],
+                                                     body['creation-date'])
         try:
             await self.__command_bus.dispatch(command)
         except DomainError as err:
