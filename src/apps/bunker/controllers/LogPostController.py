@@ -5,8 +5,8 @@ from starlette.responses import JSONResponse
 from http import HTTPStatus
 
 from src.apps.bunker.controllers.BunkerController import BunkerController
-from src.contexts.backoffice.logs.application.createone.CreateLogCommand import CreateLogCommand
-from src.contexts.backoffice.logs.infrastructure.JsonResponseErrorHandler import JsonResponseErrorHandler
+from src.contexts.bunker.logs.application.createone.CreateLogCommand import CreateLogCommand
+from src.contexts.bunker.logs.infrastructure.JsonResponseErrorHandler import JsonResponseErrorHandler
 from src.contexts.shared.domain.CommandBus import CommandBus
 from src.contexts.shared.domain.errors.DomainError import DomainError
 

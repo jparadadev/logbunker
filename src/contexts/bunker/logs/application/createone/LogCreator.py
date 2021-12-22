@@ -1,6 +1,6 @@
-from src.contexts.backoffice.logs.domain.LogRepository import LogRepository
-from src.contexts.backoffice.logs.domain.entities.Log import Log
-from src.contexts.backoffice.logs.domain.entities.LogId import LogId
+from src.contexts.bunker.logs.domain.LogRepository import LogRepository
+from src.contexts.bunker.logs.domain.entities.Log import Log
+from src.contexts.bunker.logs.domain.entities.LogId import LogId
 from src.contexts.shared.domain.EventBus import EventBus
 
 

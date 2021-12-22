@@ -1,7 +1,7 @@
 from typing import Optional, Dict, List, Union, Any
 
-from src.contexts.backoffice.logs.domain.domainevents.LogCreatedDomainEvent import LogCreatedDomainEvent
-from src.contexts.backoffice.logs.domain.entities.LogId import LogId
+from src.contexts.bunker.logs.domain.domainevents.LogCreatedDomainEvent import LogCreatedDomainEvent
+from src.contexts.bunker.logs.domain.entities.LogId import LogId
 from src.contexts.shared.domain.valueobj.AggregateRoot import AggregateRoot
 
 

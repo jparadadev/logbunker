@@ -2,11 +2,11 @@ from dependency_injector import containers, providers
 
 from src.apps.bunker.controllers.StatusGetController import StatusGetController
 from src.apps.bunker.controllers.LogPostController import LogPostController
-from src.contexts.backoffice.logs.application.createone.CreateLogCommandHandler import CreateLogCommandHandler
-from src.contexts.backoffice.logs.application.createone.LogCreator import LogCreator
-from src.contexts.backoffice.logs.infrastructure.persistence.PyMongoLogRepository import \
+from src.contexts.bunker.logs.application.createone.CreateLogCommandHandler import CreateLogCommandHandler
+from src.contexts.bunker.logs.application.createone.LogCreator import LogCreator
+from src.contexts.bunker.logs.infrastructure.persistence.PyMongoLogRepository import \
     PyMongoLogRepository
-from src.contexts.backoffice.logs.infrastructure.persistence.config.PyMongoLogConfigFactory import PyMongoLogConfigFactory
+from src.contexts.bunker.logs.infrastructure.persistence.config.PyMongoLogConfigFactory import PyMongoLogConfigFactory
 from src.contexts.shared.Infrastructure.commandbus.InMemoryCommandBus import InMemoryCommandBus
 from src.contexts.shared.Infrastructure.eventbus.InMemoryEventBus import InMemoryEventBus
 from src.contexts.shared.Infrastructure.persistence.mongo.PyMongoClientFactory import PyMongoClientFactory

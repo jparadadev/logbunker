@@ -3,9 +3,9 @@ from typing import NoReturn
 from pymongo import MongoClient, ASCENDING
 from pymongo.errors import DuplicateKeyError
 
-from src.contexts.backoffice.logs.domain.LogRepository import LogRepository
-from src.contexts.backoffice.logs.domain.entities.Log import Log
-from src.contexts.backoffice.logs.domain.errors.LogAlreadyExistsError import LogAlreadyExistsError
+from src.contexts.bunker.logs.domain.LogRepository import LogRepository
+from src.contexts.bunker.logs.domain.entities.Log import Log
+from src.contexts.bunker.logs.domain.errors.LogAlreadyExistsError import LogAlreadyExistsError
 from src.contexts.shared.Infrastructure.persistence.mongo.PyMongoRepository import PyMongoRepository
 
 

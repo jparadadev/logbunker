@@ -3,9 +3,9 @@ from typing import Any, Dict, Optional
 
 from starlette.responses import JSONResponse
 
-from src.contexts.backoffice.logs.domain.errors.LogAlreadyExistsError import LogAlreadyExistsError
-from src.contexts.backoffice.logs.domain.errors.LogInvalidValueError import LogInvalidValueError
-from src.contexts.backoffice.logs.domain.errors.LogNotFoundError import LogNotFoundError
+from src.contexts.bunker.logs.domain.errors.LogAlreadyExistsError import LogAlreadyExistsError
+from src.contexts.bunker.logs.domain.errors.LogInvalidValueError import LogInvalidValueError
+from src.contexts.bunker.logs.domain.errors.LogNotFoundError import LogNotFoundError
 from src.contexts.shared.domain.errors.DomainError import DomainError
 
 
