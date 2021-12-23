@@ -14,6 +14,8 @@ class LogCreatedDomainEvent(DomainEvent):
             log_content: Any,
             log_level: str,
             log_origin: str,
+            log_type: str,
+            log_trace: str,
             log_creation_date: datetime,
             log_registration_date: datetime,
             event_id: Optional[str] = None,
@@ -23,6 +25,8 @@ class LogCreatedDomainEvent(DomainEvent):
         self.log_content = log_content
         self.log_level = log_level
         self.log_origin = log_origin
+        self.log_type = log_type
+        self.log_trace = log_trace
         self.log_creation_date = log_creation_date
         self.log_registration_date = log_registration_date
 
@@ -36,6 +40,8 @@ class LogCreatedDomainEvent(DomainEvent):
                 'type': LogCreatedDomainEvent.EVENT_TYPE,
                 'attributes': {
                     'content': self.log_content,
+                    'trace': self.log_trace,
+                    'type': self.log_type,
                     'level': self.log_level,
                     'origin': self.log_origin,
                     'creation-date': self.log_creation_date,

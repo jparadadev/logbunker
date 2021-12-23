@@ -14,12 +14,16 @@ class CreateLogCommand(BaseObject, Command):
             log_content: Any,
             log_level: str,
             log_origin: str,
+            log_type: str,
+            log_trace: str,
             log_creation_date: str,
     ):
         self.log_id = log_id
         self.log_content = log_content
         self.log_level = log_level
         self.log_origin = log_origin
+        self.log_trace = log_trace
+        self.log_type = log_type
         self.log_creation_date = log_creation_date
 
     def get_command_type_name(self) -> str:

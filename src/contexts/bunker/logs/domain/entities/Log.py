@@ -8,6 +8,8 @@ from src.contexts.bunker.logs.domain.entities.LogId import LogId
 from src.contexts.bunker.logs.domain.entities.LogLevel import LogLevel
 from src.contexts.bunker.logs.domain.entities.LogOrigin import LogOrigin
 from src.contexts.bunker.logs.domain.entities.LogRegistrationDate import LogRegistrationDate
+from src.contexts.bunker.logs.domain.entities.LogTrace import LogTrace
+from src.contexts.bunker.logs.domain.entities.LogType import LogType
 from src.contexts.shared.domain.valueobj.AggregateRoot import AggregateRoot
 
 
@@ -19,6 +21,8 @@ class Log(AggregateRoot):
             content: LogContent,
             level: LogLevel,
             origin: LogOrigin,
+            log_type: LogType,
+            trace: LogTrace,
             creation_date: LogCreationDate,
             registration_date: LogRegistrationDate = None,
     ):
@@ -27,6 +31,8 @@ class Log(AggregateRoot):
         self.content = content
         self.level = level
         self.origin = origin
+        self.type = log_type
+        self.trace = trace
         self.creation_date = creation_date
         if registration_date is None:
             registration_date = LogRegistrationDate(datetime.now())
@@ -38,14 +44,18 @@ class Log(AggregateRoot):
             content: LogContent,
             level: LogLevel,
             origin: LogOrigin,
+            log_type: LogType,
+            trace: LogTrace,
             creation_date: LogCreationDate,
     ):
-        log = Log(log_id, content, level, origin, creation_date)
+        log = Log(log_id, content, level, origin, log_type, trace, creation_date)
         event = LogCreatedDomainEvent(
             log.id.value(),
             log.content.value(),
             log.level.value(),
             log.origin.value(),
+            log.type.value(),
+            log.trace.value(),
             log.creation_date.value(),
             log.registration_date.value(),
         )
@@ -59,6 +69,8 @@ class Log(AggregateRoot):
             LogContent(raw_data.get('content')),
             LogLevel(raw_data.get('level')),
             LogOrigin(raw_data.get('origin')),
+            LogType(raw_data.get('type')),
+            LogTrace(raw_data.get('trace')),
             LogCreationDate(raw_data.get('creation-date')),
             LogRegistrationDate(raw_data.get('registration-date')),
         )
@@ -70,6 +82,8 @@ class Log(AggregateRoot):
             'content': self.content.value(),
             'level': self.level.value(),
             'origin': self.origin.value(),
+            'type': self.type.value(),
+            'trace': self.trace.value(),
             'creation-date': self.creation_date.value(),
             'registration-date': self.registration_date.value(),
         }

@@ -8,6 +8,8 @@ from src.contexts.bunker.logs.domain.entities.LogCreationDate import LogCreation
 from src.contexts.bunker.logs.domain.entities.LogId import LogId
 from src.contexts.bunker.logs.domain.entities.LogLevel import LogLevel
 from src.contexts.bunker.logs.domain.entities.LogOrigin import LogOrigin
+from src.contexts.bunker.logs.domain.entities.LogTrace import LogTrace
+from src.contexts.bunker.logs.domain.entities.LogType import LogType
 from src.contexts.shared.domain.BaseObject import BaseObject
 from src.contexts.shared.domain.CommandHandler import CommandHandler
 
@@ -27,8 +29,10 @@ class CreateLogCommandHandler(BaseObject, CommandHandler):
         content = LogContent(command.log_content)
         level = LogLevel(command.log_level)
         origin = LogOrigin(command.log_origin)
+        trace = LogTrace(command.log_trace)
+        log_type = LogType(command.log_type)
         creation_date = LogCreationDate(datetime.fromisoformat(command.log_creation_date))
 
-        await self.__creator.run(log_id, content, level, origin, creation_date)
+        await self.__creator.run(log_id, content, level, origin, log_type, trace, creation_date)
 
 
