@@ -14,7 +14,12 @@ deps:
 test:
 	python3 -m unittest discover -s ./tests -p '*Test.py'
 
-# Run full app
-.PHONY = run
-run:
+# Run bunker
+.PHONY = run/bunker
+run/bunker:
 	python3 main.py --service bunker
+
+# Run backoffice
+.PHONY = run/backoffice
+run/bunker:
+	python3 main.py --service backoffice
