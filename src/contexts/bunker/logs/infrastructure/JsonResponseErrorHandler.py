@@ -5,7 +5,6 @@ from starlette.responses import JSONResponse
 
 from src.contexts.bunker.logs.domain.errors.LogAlreadyExistsError import LogAlreadyExistsError
 from src.contexts.bunker.logs.domain.errors.LogInvalidValueError import LogInvalidValueError
-from src.contexts.bunker.logs.domain.errors.LogNotFoundError import LogNotFoundError
 from src.contexts.shared.domain.errors.DomainError import DomainError
 
 
@@ -22,11 +21,6 @@ class JsonResponseErrorHandler:
             'is-critical': False,
             'status-code': HTTPStatus.BAD_REQUEST,
         },
-        LogNotFoundError.ERROR_ID: {
-            'is-private': False,
-            'is-critical': False,
-            'status-code': HTTPStatus.NOT_FOUND,
-        }
     }
 
     def __init__(self):

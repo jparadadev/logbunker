@@ -1,6 +1,6 @@
 from typing import NoReturn
 
-from pymongo import MongoClient, ASCENDING
+from pymongo import MongoClient, ASCENDING, DESCENDING
 from pymongo.errors import DuplicateKeyError
 
 from src.contexts.bunker.logs.domain.LogRepository import LogRepository
@@ -19,6 +19,12 @@ class PyMongoLogRepository(PyMongoRepository, LogRepository):
         super()._get_collection().create_index([
             ('id', ASCENDING)
         ], unique=True)
+        super()._get_collection().create_index([
+            ('creation-date', DESCENDING)
+        ], unique=False)
+        super()._get_collection().create_index([
+            ('registration-date', DESCENDING)
+        ], unique=False)
 
     def get_database_name(self):
         return self.__DATABASE_NAME
