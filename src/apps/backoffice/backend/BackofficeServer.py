@@ -1,14 +1,14 @@
 import uvicorn
 
-from src.apps.bunker.BunkerApp import BunkerApp
+from src.apps.backoffice.backend.BackofficeApp import BackofficeApp
 from src.contexts.shared.Infrastructure.environment.EnvManager import EnvManager
 from src.contexts.shared.Infrastructure.environment.EnvVar import EnvVar
 
 
-class BunkerServer:
+class BackofficeServer:
 
     def __init__(self):
-        self.app = BunkerApp()
+        self.app = BackofficeApp()
 
     def run(self):
         host = EnvManager.get(EnvVar.BUNKER_SERVER_HOST)

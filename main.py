@@ -1,10 +1,12 @@
 import argparse
 
-from src.apps.bunker.boot import boot as boot_backoffice
+from src.apps.bunker.boot import boot as boot_bunker
+from src.apps.backoffice.backend.boot import boot as boot_backoffice
 
 
 service_mapping = {
-    'bunker': boot_backoffice,
+    'bunker': boot_bunker,
+    'backoffice': boot_backoffice
 }
 
 if __name__ == "__main__":

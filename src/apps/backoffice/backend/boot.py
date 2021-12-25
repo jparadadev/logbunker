@@ -1,6 +1,6 @@
-from src.apps.bunker.BunkerServer import BunkerServer
+from src.apps.backoffice.backend.BackofficeServer import BackofficeServer
 
 
 def boot():
-    server = BunkerServer()
+    server = BackofficeServer()
     server.run()

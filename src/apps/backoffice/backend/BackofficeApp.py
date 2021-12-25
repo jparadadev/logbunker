@@ -1,9 +1,9 @@
 from fastapi import FastAPI, APIRouter
 
-from src.apps.bunker.routes import register_routes
+from src.apps.backoffice.backend.routes import register_routes
 
 
-class BunkerApp:
+class BackofficeApp:
 
     def __init__(self):
         self.__app: FastAPI = FastAPI()

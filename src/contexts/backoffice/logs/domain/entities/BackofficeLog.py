@@ -1,15 +1,14 @@
 from datetime import datetime
 from typing import Dict, List, Union, Any
 
-from src.contexts.bunker.logs.domain.domainevents.LogCreatedDomainEvent import LogCreatedDomainEvent
-from src.contexts.bunker.logs.domain.entities.LogContent import LogContent
-from src.contexts.bunker.logs.domain.entities.LogCreationDate import LogCreationDate
-from src.contexts.bunker.logs.domain.entities.LogId import LogId
-from src.contexts.bunker.logs.domain.entities.LogLevel import LogLevel
-from src.contexts.bunker.logs.domain.entities.LogOrigin import LogOrigin
-from src.contexts.bunker.logs.domain.entities.LogRegistrationDate import LogRegistrationDate
-from src.contexts.bunker.logs.domain.entities.LogTrace import LogTrace
-from src.contexts.bunker.logs.domain.entities.LogType import LogType
+from src.contexts.backoffice.logs.domain.entities.LogContent import LogContent
+from src.contexts.backoffice.logs.domain.entities.LogCreationDate import LogCreationDate
+from src.contexts.backoffice.logs.domain.entities.LogId import LogId
+from src.contexts.backoffice.logs.domain.entities.LogLevel import LogLevel
+from src.contexts.backoffice.logs.domain.entities.LogOrigin import LogOrigin
+from src.contexts.backoffice.logs.domain.entities.LogRegistrationDate import LogRegistrationDate
+from src.contexts.backoffice.logs.domain.entities.LogTrace import LogTrace
+from src.contexts.backoffice.logs.domain.entities.LogType import LogType
 from src.contexts.shared.domain.valueobj.AggregateRoot import AggregateRoot
 
 

@@ -4,7 +4,7 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 
 
-class BunkerController(ABC):
+class BackofficeController(ABC):
 
     @abstractmethod
     async def run(self, req: Request) -> JSONResponse:

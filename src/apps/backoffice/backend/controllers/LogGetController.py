@@ -1,31 +1,34 @@
-from typing import Dict, Any
-
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from http import HTTPStatus
 
-from src.apps.bunker.controllers.BunkerController import BunkerController
-from src.contexts.bunker.logs.application.createone.CreateLogCommand import CreateLogCommand
+from src.apps.backoffice.backend.controllers.BackofficeController import BackofficeController
+from src.contexts.backoffice.logs.application.findall.FindLogsByCriteriaQuery import FindLogsByCriteriaQuery
 from src.contexts.bunker.logs.infrastructure.JsonResponseErrorHandler import JsonResponseErrorHandler
-from src.contexts.shared.domain.CommandBus import CommandBus
+from src.contexts.shared.Infrastructure.parsers.parse_dict_format_to_criteria import parse_dict_to_criteria
+from src.contexts.shared.domain.Query import Query
+from src.contexts.shared.domain.QueryBus import QueryBus
+from src.contexts.shared.domain.Response import Response
 from src.contexts.shared.domain.errors.DomainError import DomainError
 
 
-class LogGetController(BunkerController):
+class LogGetController(BackofficeController):
 
     def __init__(
             self,
-            command_bus: CommandBus,
+            query_bus: QueryBus,
     ):
-        self.__command_bus = command_bus
+        self.__query_bus = query_bus
         self.__error_handler = JsonResponseErrorHandler()
 
     async def run(self, req: Request) -> JSONResponse:
-        body: Dict[str, Any] = await req.json()
-
+        query_params = dict(req.query_params)
+        filters, order_by, limit = parse_dict_to_criteria(query_params)
+        query: Query = FindLogsByCriteriaQuery(filters, order_by, limit)
         try:
-            await self.__command_bus.dispatch(None)
+            res: Response = await self.__query_bus.ask(query)
+            return JSONResponse(status_code=HTTPStatus.OK, content=res.to_primitives())
         except DomainError as err:
             return self.__error_handler.resolve(err)
 
-        return JSONResponse(status_code=HTTPStatus.CREATED)
+
