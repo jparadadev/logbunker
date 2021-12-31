@@ -19,7 +19,7 @@ test:
 run/bunker:
 	python3 main.py --service bunker
 
-# Run backoffice
+# Run bunker
 .PHONY = run/backoffice
-run/bunker:
+run/backoffice:
 	python3 main.py --service backoffice

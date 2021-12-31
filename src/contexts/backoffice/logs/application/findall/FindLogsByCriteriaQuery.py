@@ -8,7 +8,7 @@ from src.contexts.shared.domain.criteria.OrderBy import OrderBy
 
 class FindLogsByCriteriaQuery(Query):
 
-    QUERY_TYPE: str = 'find-backoffice-logs-by-criteria'
+    QUERY_TYPE: str = 'find-bunker-logs-by-criteria'
 
     def __init__(
             self,

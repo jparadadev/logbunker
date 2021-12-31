@@ -14,7 +14,7 @@ class FullApp:
 
         backoffice_router: APIRouter = APIRouter()
         register_backoffice_routes(backoffice_router)
-        self.__app.include_router(backoffice_router, prefix='/backoffice/api')
+        self.__app.include_router(backoffice_router, prefix='/bunker/api')
 
     def get_runnable(self):
         return self.__app
