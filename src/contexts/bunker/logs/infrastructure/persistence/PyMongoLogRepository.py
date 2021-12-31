@@ -17,9 +17,6 @@ class PyMongoLogRepository(PyMongoRepository, LogRepository):
     def __init__(self, client: MongoClient):
         super().__init__(client)
         super()._get_collection().create_index([
-            ('id', ASCENDING)
-        ], unique=True)
-        super()._get_collection().create_index([
             ('creation-date', DESCENDING)
         ], unique=False)
         super()._get_collection().create_index([
