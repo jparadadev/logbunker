@@ -10,11 +10,11 @@ class FullApp:
         self.__app: FastAPI = FastAPI()
         bunker_router: APIRouter = APIRouter()
         register_bunker_routes(bunker_router)
-        self.__app.include_router(bunker_router, prefix='/bunker/api')
+        self.__app.include_router(bunker_router, prefix='/api')
 
         backoffice_router: APIRouter = APIRouter()
         register_backoffice_routes(backoffice_router)
-        self.__app.include_router(backoffice_router, prefix='/bunker/api')
+        self.__app.include_router(backoffice_router, prefix='/api')
 
     def get_runnable(self):
         return self.__app
