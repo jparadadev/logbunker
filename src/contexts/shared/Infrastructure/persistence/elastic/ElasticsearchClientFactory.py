@@ -1,7 +1,6 @@
 from typing import Dict, Optional
 
 from elasticsearch import Elasticsearch
-from pymongo import MongoClient
 
 from src.contexts.shared.Infrastructure.persistence.elastic.ElasticsearchConfiguration import ElasticsearchConfiguration
 

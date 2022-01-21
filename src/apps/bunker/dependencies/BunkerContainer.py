@@ -4,12 +4,15 @@ from src.apps.bunker.controllers.StatusGetController import StatusGetController
 from src.apps.bunker.controllers.LogPostController import LogPostController
 from src.contexts.bunker.logs.application.createone.CreateLogCommandHandler import CreateLogCommandHandler
 from src.contexts.bunker.logs.application.createone.LogCreator import LogCreator
-from src.contexts.bunker.logs.infrastructure.persistence.PyMongoLogRepository import \
+from src.contexts.bunker.logs.infrastructure.persistence.elastic.ElasticsearchLogRepository import \
+    ElasticsearchLogRepository
+from src.contexts.bunker.logs.infrastructure.persistence.elastic.config.ElasticsearchLogConfigFactory import \
+    ElasticsearchLogConfigFactory
+from src.contexts.bunker.logs.infrastructure.persistence.mongo.PyMongoLogRepository import \
     PyMongoLogRepository
-from src.contexts.bunker.logs.infrastructure.persistence.config.PyMongoLogConfigFactory import PyMongoLogConfigFactory
 from src.contexts.shared.Infrastructure.commandbus.InMemoryCommandBus import InMemoryCommandBus
 from src.contexts.shared.Infrastructure.eventbus.InMemoryEventBus import InMemoryEventBus
-from src.contexts.shared.Infrastructure.persistence.mongo.PyMongoClientFactory import PyMongoClientFactory
+from src.contexts.shared.Infrastructure.persistence.elastic.ElasticsearchClientFactory import ElasticsearchClientFactory
 
 
 class BunkerContainer(containers.DeclarativeContainer):
@@ -18,10 +21,10 @@ class BunkerContainer(containers.DeclarativeContainer):
         InMemoryEventBus,
     )
 
-    db_config = providers.Singleton(PyMongoLogConfigFactory.create)
-    db_client = providers.Singleton(PyMongoClientFactory.create_instance, 'bunker', db_config)
+    db_config = providers.Singleton(ElasticsearchLogConfigFactory.create)
+    db_client = providers.Singleton(ElasticsearchClientFactory.create_instance, 'bunker', db_config)
 
-    log_repository = providers.Singleton(PyMongoLogRepository, db_client)
+    log_repository = providers.Singleton(ElasticsearchLogRepository, db_client)
 
     log_creator = providers.Singleton(LogCreator, log_repository, event_bus)
     create_log_command_handler = providers.Singleton(

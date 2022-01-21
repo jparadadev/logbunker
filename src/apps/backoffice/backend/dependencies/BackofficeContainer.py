@@ -7,7 +7,7 @@ from src.contexts.backoffice.logs.application.findall.FindLogsByCriteriaQueryHan
 from src.contexts.backoffice.logs.application.findall.LogsByCriteriaFinder import LogsByCriteriaFinder
 from src.contexts.backoffice.logs.infrastructure.persistence.PyMongoBackofficeLogRepository import \
     PyMongoBackofficeLogRepository
-from src.contexts.bunker.logs.infrastructure.persistence.config.PyMongoLogConfigFactory import PyMongoLogConfigFactory
+from src.contexts.bunker.logs.infrastructure.persistence.mongo.config.PyMongoLogConfigFactory import PyMongoLogConfigFactory
 from src.contexts.shared.Infrastructure.persistence.mongo.PyMongoClientFactory import PyMongoClientFactory
 from src.contexts.shared.Infrastructure.querybus.InMemoryQueryBus import InMemoryQueryBus
 

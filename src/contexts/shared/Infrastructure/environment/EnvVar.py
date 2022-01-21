@@ -16,5 +16,8 @@ class EnvVar(Enum):
     # ------------------------ LOG --------------------------
     # -------------------------------------------------------
 
-    SHARED_LOG_MONGO_HOST = 'shared.log.mongo.host'
-    SHARED_LOG_MONGO_PORT = 'shared.log.mongo.port'
+    SHARED_LOG_MONGO_HOST   = 'shared.log.mongo.host'
+    SHARED_LOG_MONGO_PORT   = 'shared.log.mongo.port'
+
+    SHARED_LOG_ELASTIC_HOST = 'shared.log.elastic.host'
+    SHARED_LOG_ELASTIC_PORT = 'shared.log.elastic.port'
