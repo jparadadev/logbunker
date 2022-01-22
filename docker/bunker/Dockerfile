@@ -4,4 +4,4 @@ COPY . .
 
 RUN make deps
 
-CMD ['make', 'all']
+CMD ['make', 'run/bunker']

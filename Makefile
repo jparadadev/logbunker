@@ -23,3 +23,8 @@ run/bunker:
 .PHONY = run/backoffice
 run/backoffice:
 	python3 main.py --service backoffice
+
+# Run all ctx
+.PHONY = run/all
+run/backoffice:
+	python3 main.py --service all
