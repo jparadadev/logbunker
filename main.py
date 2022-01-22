@@ -17,7 +17,7 @@ if __name__ == "__main__":
         '--service',
         type=str,
         nargs='?',
-        help='Service to run must be one of ["bunker"]',
+        help='Service to run must be one of ["bunker", "backoffice", "all"]',
     )
     params = vars(parser.parse_args())
     service_name = params['service']
