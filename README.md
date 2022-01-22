@@ -21,3 +21,8 @@ Run log filtering and query service:
 ```
 make run/backoffice
 ```
+
+Run all services:
+```
+make run/all
+```
