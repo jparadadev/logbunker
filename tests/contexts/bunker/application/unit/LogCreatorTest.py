@@ -1,7 +1,7 @@
 import unittest
 
-from src.contexts.bunker.logs.application.createone.LogCreator import LogCreator
-from src.contexts.bunker.logs.domain.entities.Log import Log
+from logbunker.contexts.bunker.logs.application.createone.LogCreator import LogCreator
+from logbunker.contexts.bunker.logs.domain.entities.Log import Log
 from tests.contexts.bunker.__mocks__.EventBusMock import EventBusMock
 from tests.contexts.bunker.__mocks__.LogRepositoryMock import LogRepositoryMock
 from tests.contexts.bunker.__mothers__.LogMother import LogMother

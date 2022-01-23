@@ -1,9 +1,9 @@
 from typing import List
 
-from src.contexts.shared.domain.BaseObject import BaseObject
-from src.contexts.shared.domain.DomainEvent import DomainEvent
-from src.contexts.shared.domain.EventBus import EventBus
-from src.contexts.shared.domain.EventSubscriber import EventSubscriber
+from logbunker.contexts.shared.domain.BaseObject import BaseObject
+from logbunker.contexts.shared.domain.DomainEvent import DomainEvent
+from logbunker.contexts.shared.domain.EventBus import EventBus
+from logbunker.contexts.shared.domain.EventSubscriber import EventSubscriber
 
 
 class EventBusMock(BaseObject, EventBus):

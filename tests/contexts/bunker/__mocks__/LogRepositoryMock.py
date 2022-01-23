@@ -1,10 +1,10 @@
 from typing import NoReturn, List
 from unittest.mock import Mock
 
-from src.contexts.bunker.logs.domain.LogRepository import LogRepository
-from src.contexts.bunker.logs.domain.entities.Log import Log
-from src.contexts.shared.domain.BaseObject import BaseObject
-from src.contexts.shared.domain.criteria.Criteria import Criteria
+from logbunker.contexts.bunker.logs.domain.LogRepository import LogRepository
+from logbunker.contexts.bunker.logs.domain.entities.Log import Log
+from logbunker.contexts.shared.domain.BaseObject import BaseObject
+from logbunker.contexts.shared.domain.criteria.Criteria import Criteria
 from tests.contexts.bunker.__matchers__.LogMatcher import LogMatcher
 
 

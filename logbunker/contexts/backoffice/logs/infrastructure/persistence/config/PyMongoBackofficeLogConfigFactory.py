@@ -1,0 +1,14 @@
+from logbunker.contexts.shared.Infrastructure.environment.EnvManager import EnvManager
+from logbunker.contexts.shared.Infrastructure.environment.EnvVar import EnvVar
+from logbunker.contexts.shared.Infrastructure.persistence.mongo.PyMongoConfiguration import PyMongoConfiguration
+
+
+class PyMongoBackofficeLogConfigFactory:
+
+    @staticmethod
+    def create() -> PyMongoConfiguration:
+        config = PyMongoConfiguration(
+            EnvManager.get(EnvVar.SHARED_LOG_MONGO_HOST),
+            EnvManager.get(EnvVar.SHARED_LOG_MONGO_PORT, parser=int),
+        )
+        return config

@@ -17,14 +17,14 @@ test:
 # Run bunker
 .PHONY = run/bunker
 run/bunker:
-	python3 main.py --service bunker
+	python3 -m logbunker --service bunker
 
 # Run bunker
 .PHONY = run/backoffice
 run/backoffice:
-	python3 main.py --service backoffice
+	python3 -m logbunker --service backoffice
 
 # Run all ctx
 .PHONY = run/all
 run/backoffice:
-	python3 main.py --service all
+	python3 -m logbunker --service all

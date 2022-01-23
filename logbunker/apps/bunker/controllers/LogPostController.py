@@ -1,0 +1,33 @@
+from typing import Dict, Any
+
+from starlette.requests import Request
+from starlette.responses import JSONResponse
+from http import HTTPStatus
+
+from logbunker.apps.bunker.controllers.BunkerController import BunkerController
+from logbunker.contexts.bunker.logs.application.createone.CreateLogCommand import CreateLogCommand
+from logbunker.contexts.bunker.logs.infrastructure.JsonResponseErrorHandler import JsonResponseErrorHandler
+from logbunker.contexts.shared.domain.CommandBus import CommandBus
+from logbunker.contexts.shared.domain.errors.DomainError import DomainError
+
+
+class LogPostController(BunkerController):
+
+    def __init__(
+            self,
+            command_bus: CommandBus,
+    ):
+        self.__command_bus = command_bus
+        self.__error_handler = JsonResponseErrorHandler()
+
+    async def run(self, req: Request) -> JSONResponse:
+        body: Dict[str, Any] = await req.json()
+        command: CreateLogCommand = CreateLogCommand(body.get('id'), body.get('content'), body.get('level'),
+                                                     body.get('origin'), body.get('type'), body.get('trace'),
+                                                     body.get('creation-date'))
+        try:
+            await self.__command_bus.dispatch(command)
+        except DomainError as err:
+            return self.__error_handler.resolve(err)
+
+        return JSONResponse(status_code=HTTPStatus.CREATED)

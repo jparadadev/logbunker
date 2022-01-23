@@ -1,5 +1,5 @@
-from src.contexts.bunker.logs.domain.entities.LogLevel import LogLevel
-from src.contexts.bunker.logs.domain.entities.LogOrigin import LogOrigin
+from logbunker.contexts.bunker.logs.domain.entities.LogLevel import LogLevel
+from logbunker.contexts.bunker.logs.domain.entities.LogOrigin import LogOrigin
 from tests.utils.mothers.WordMother import WordMother
 
 

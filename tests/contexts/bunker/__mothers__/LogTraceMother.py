@@ -1,4 +1,4 @@
-from src.contexts.bunker.logs.domain.entities.LogTrace import LogTrace
+from logbunker.contexts.bunker.logs.domain.entities.LogTrace import LogTrace
 from tests.utils.mothers.WordMother import WordMother
 
 

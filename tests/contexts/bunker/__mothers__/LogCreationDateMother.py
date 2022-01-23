@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.contexts.bunker.logs.domain.entities.LogCreationDate import LogCreationDate
+from logbunker.contexts.bunker.logs.domain.entities.LogCreationDate import LogCreationDate
 from tests.utils.mothers.DatetimeMother import DatetimeMother
 
 

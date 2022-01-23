@@ -1,4 +1,4 @@
-from src.contexts.bunker.logs.domain.entities.Log import Log
+from logbunker.contexts.bunker.logs.domain.entities.Log import Log
 
 
 class LogMatcher:

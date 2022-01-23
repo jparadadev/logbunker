@@ -1,4 +1,4 @@
-from src.contexts.bunker.logs.domain.entities.LogLevel import LogLevel
+from logbunker.contexts.bunker.logs.domain.entities.LogLevel import LogLevel
 from tests.utils.mothers.WordMother import WordMother
 
 
