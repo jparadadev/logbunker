@@ -24,32 +24,12 @@ jobs:
             - name: Run tests
               run: make test
 
-    build-all:
+    build:
         needs: tests
         runs-on: ubuntu-latest
         steps:
             - name: Clone and checkout branch
               uses: actions/checkout@v2
 
-            - name: Build docker image for all bounded contexts
+            - name: Build docker image
               run: docker build -t test-tag .
-
-    build-bunker:
-        needs: tests
-        runs-on: ubuntu-latest
-        steps:
-            - name: Clone and checkout branch
-              uses: actions/checkout@v2
-
-            - name: Build docker image for Bunker
-              run: docker build -t test-tag -f ./docker/bunker/Dockerfile .
-
-    build-backoffice:
-      needs: tests
-      runs-on: ubuntu-latest
-      steps:
-        - name: Clone and checkout branch
-          uses: actions/checkout@v2
-
-        - name: Build docker image for Backoffice
-          run: docker build -t test-tag -f ./docker/backoffice/Dockerfile .
