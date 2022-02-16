@@ -6,6 +6,7 @@ from starlette.requests import Request
 
 from logbunker.apps.bunker.controllers.LogPostController import LogPostController
 from logbunker.apps.bunker.dependencies.BunkerContainer import BunkerContainer, bunker_container
+from logbunker.contexts.bunker.logs.infrastructure.dtos.CreateLogCommandDto import CreateLogCommandDto
 
 
 @inject
@@ -14,7 +15,7 @@ def register(
         log_post_controller: LogPostController = Provide[BunkerContainer.log_post_controller],
 ):
     @router.post('/logs', tags=["Logs"])
-    async def run_wrapper(req: Request):
+    async def run_wrapper(_: CreateLogCommandDto, req: Request):
         return await log_post_controller.run(req)
 
 

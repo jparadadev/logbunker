@@ -6,7 +6,6 @@ from starlette.requests import Request
 
 from logbunker.apps.backoffice.backend.dependencies.BackofficeContainer import BackofficeContainer, backoffice_container
 from logbunker.apps.bunker.controllers.StatusGetController import StatusGetController
-from logbunker.apps.bunker.dependencies.BunkerContainer import BunkerContainer, bunker_container
 
 
 @inject
