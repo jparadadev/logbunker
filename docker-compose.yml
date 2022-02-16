@@ -1,18 +1,20 @@
 version: "3.0"
-services:
 
   x-app-service: &default-app
     build: .
     command: ''
     environment:
-      - MONGO_URL=mongodb://mongo:27017/dev
+      - shared.log.mongo.host=mongodb
+      - shared.log.mongo.port=27017
     depends_on:
-      - mongo
+      - mongodb
       - kibana
       - elasticsearch
     volumes:
       - .:/code:delegated
       - node_modules:/code/node_modules:delegated
+
+services:
 
   elasticsearch:
     container_name: siem-elastic
@@ -37,12 +39,29 @@ services:
     ports:
       - "5601:5601"
 
-  logbunker:
-    build: .
-    container_name: siem-logbunker
-    e
-    depends_on:
-      - elasticsearch
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: unless-stopped
+    networks:
+      - es-net
+    ports:
+      - "27017:27017"
+
+  app:
+    <<: *default-app
+
+  logbunker-backoffice:
+    <<: *default-app
+    command: bash -c "make run/backoffice"
+    ports:
+      - "3001:3000"
+    networks:
+      - es-net
+
+  logbunker-bunker:
+    <<: *default-app
+    command: bash -c "make run/bunker"
     ports:
       - "8000:8000"
     networks:
