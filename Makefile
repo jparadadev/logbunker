@@ -26,5 +26,5 @@ run/backoffice:
 
 # Run all ctx
 .PHONY = run/all
-run/backoffice:
+run/all:
 	python3 -m logbunker --service all

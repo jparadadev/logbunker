@@ -1,0 +1,53 @@
+version: "3.0"
+services:
+
+  x-app-service: &default-app
+    build: .
+    command: ''
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/dev
+    depends_on:
+      - mongo
+      - kibana
+      - elasticsearch
+    volumes:
+      - .:/code:delegated
+      - node_modules:/code/node_modules:delegated
+
+  elasticsearch:
+    container_name: siem-elastic
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    networks:
+      - es-net
+    ports:
+      - "9200:9200"
+
+  kibana:
+    container_name: siem-kibana
+    image: docker.elastic.co/kibana/kibana:7.11.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://siem-elastic:9200
+    networks:
+      - es-net
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+
+  logbunker:
+    build: .
+    container_name: siem-logbunker
+    e
+    depends_on:
+      - elasticsearch
+    ports:
+      - "8000:8000"
+    networks:
+      - es-net
+
+networks:
+  es-net:
+    driver: bridge
