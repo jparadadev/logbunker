@@ -8,7 +8,7 @@ attrs==21.4.0
 certifi==2021.10.8
 charset-normalizer==2.0.10
 click==8.0.3
-deepfinder==0.2.1
+deepfinder==1.0.0
 dependency-injector==4.37.0
 elasticsearch==7.16.3
 fastapi==0.70.0
